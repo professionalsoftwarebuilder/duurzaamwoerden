@@ -23,12 +23,18 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j312ngzvtqv&a1b56bm7&a88x^l%*zhqurzdxogi^682f*o=sa'
+#SECRET_KEY = 'j312ngzvtqv&a1b56bm7&a88x^l%*zhqurzdxogi^682f*o=sa'
+
+try:
+    SECRET_KEY = os.environ["SECRET_KEY"]
+except KeyError as e:
+    raise RuntimeError("Could not find a SECRET_KEY in environment")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['no0.nl', '185.95.14.162', 'databank.duurzaamwoerden.nl', '127.0.0.1']
+ALLOWED_HOSTS = ['no0.nl', 'localhost', '185.95.14.162', '185.95.14.162:8000', 'databank.duurzaamwoerden.nl', 'databank.duurzaamwoerden.nl:8000', 'www.databank.duurzaamwoerden.nl', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://databank.duurzaamwoerden.nl']
 
 # Application definition
 
@@ -91,6 +97,7 @@ DATABASES = {
         'PASSWORD': 'aPassWord',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+        #'OPTIONS': {'sslmode': 'require'},
     }
 }
 
@@ -144,3 +151,22 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LOGOUT_REDIRECT_URL = '/'
+
+CORS_REPLACE_HTTPS_REFERER      = True
+HOST_SCHEME                     = "https://"
+SECURE_PROXY_SSL_HEADER         = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_SSL_REDIRECT             = True
+SESSION_COOKIE_SECURE           = True
+CSRF_COOKIE_SECURE              = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
+SECURE_HSTS_SECONDS             = 1000000
+SECURE_FRAME_DENY               = True
+
+
+# os.environ['wsgi.url_scheme'] = 'https'
+#
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS = 3600
+# SESSION_COOKIE_SECURE = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+# CSRF_COOKIE_SECURE = True
