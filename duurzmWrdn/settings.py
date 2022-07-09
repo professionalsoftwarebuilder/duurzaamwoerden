@@ -23,12 +23,12 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'j312ngzvtqv&a1b56bm7&a88x^l%*zhqurzdxogi^682f*o=sa'
+SECRET_KEY = 'j312ngzvtqv&a1b56bm7&a88x^l%*zhqurzdxogi^682f*o=sa'
 
-try:
-    SECRET_KEY = os.environ["SECRET_KEY"]
-except KeyError as e:
-    raise RuntimeError("Could not find a SECRET_KEY in environment")
+# try:
+#     SECRET_KEY = os.environ["SECRET_KEY"]
+# except KeyError as e:
+#     raise RuntimeError("Could not find a SECRET_KEY in environment")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
