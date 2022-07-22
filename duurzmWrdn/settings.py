@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'drzData',
+    'django_extensions',
+    'django.contrib.admindocs',
 ]
 
 MIDDLEWARE = [
@@ -170,3 +173,11 @@ SECURE_FRAME_DENY               = True
 # SESSION_COOKIE_SECURE = True
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 # CSRF_COOKIE_SECURE = True
+
+GRAPH_MODELS = {
+    'all_applications': False,
+    'group_models': True,
+    'app_labels': ["Duurzaam Woerden", "auth"],
+}
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
