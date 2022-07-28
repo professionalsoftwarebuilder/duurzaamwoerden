@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'drzData',
     'django_extensions',
     'django.contrib.admindocs',
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [
